@@ -351,7 +351,7 @@ app.include_router(secure_router)
 def start_app_with_ngrok(args):
     file_utils.static_serve_base_url = args.base_url + "/files/"
     # 设置你的 ngrok authtoken
-    ngrok.set_auth_token("cr_2dOkHUVngaVInrLn2HmS0mWfCQ9")
+    ngrok.set_auth_token("2dOkoc1XZzd0cddNWfq26GVuvLE_55WM1zwbEt2zTzG7ByaAk")
     # 设置 ngrok 代理到您的 FastAPI 应用程序的端口
     ngrok_tunnel = ngrok.connect(args.port)
     print('NGROK Tunnel URL:', ngrok_tunnel.public_url)
