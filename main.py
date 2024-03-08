@@ -7,6 +7,8 @@ import sys
 from importlib.util import find_spec
 from threading import Thread
 
+
+
 from fooocus_api_version import version
 from fooocusapi.repositories_versions import fooocus_commit_hash
 sys.path.append(os.path.dirname(os.path.realpath(__file__)))
@@ -211,8 +213,8 @@ def download_models():
     ]
 
     from modules.model_loader import load_file_from_url
-    from modules.config import (path_checkpoints as modelfile_path,
-                                path_loras as lorafile_path,
+    from modules.config import (paths_checkpoints as modelfile_path,
+                                paths_loras as lorafile_path,
                                 path_vae_approx as vae_approx_path,
                                 path_fooocus_expansion as fooocus_expansion_path,
                                 checkpoint_downloads,
@@ -420,6 +422,6 @@ if __name__ == "__main__":
         task_schedule_thread.start()
 
         # Start api server
-        from fooocusapi.api import start_app
+        from fooocusapi.api import start_app_with_ngrok
 
-        start_app(args)
+        start_app_with_ngrok(args)
