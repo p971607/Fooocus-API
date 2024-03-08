@@ -213,8 +213,8 @@ def download_models():
     ]
 
     from modules.model_loader import load_file_from_url
-    from modules.config import (paths_checkpoints as modelfile_path,
-                                paths_loras as lorafile_path,
+    from modules.config import (path_checkpoints as modelfile_path,
+                                path_loras as lorafile_path,
                                 path_vae_approx as vae_approx_path,
                                 path_fooocus_expansion as fooocus_expansion_path,
                                 checkpoint_downloads,
