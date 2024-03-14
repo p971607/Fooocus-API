@@ -7,8 +7,6 @@ import sys
 from importlib.util import find_spec
 from threading import Thread
 
-
-
 from fooocus_api_version import version
 from fooocusapi.repositories_versions import fooocus_commit_hash
 sys.path.append(os.path.dirname(os.path.realpath(__file__)))
@@ -422,6 +420,6 @@ if __name__ == "__main__":
         task_schedule_thread.start()
 
         # Start api server
-        from fooocusapi.api import start_app_with_ngrok
+        from fooocusapi.api import start_app
 
-        start_app_with_ngrok(args)
+        start_app(args)

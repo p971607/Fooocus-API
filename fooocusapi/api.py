@@ -1,5 +1,4 @@
 import uvicorn
-from pyngrok import ngrok
 
 from typing import List, Optional
 from fastapi import Depends, FastAPI, Header, Query, Response, UploadFile, APIRouter, Depends
@@ -348,14 +347,7 @@ app.mount("/files", StaticFiles(directory=file_utils.output_dir), name="files")
 
 app.include_router(secure_router)
 
-def start_app_with_ngrok(args):
+def start_app(args):
     file_utils.static_serve_base_url = args.base_url + "/files/"
-    # 设置你的 ngrok authtoken
-    ngrok.set_auth_token("2dOkoc1XZzd0cddNWfq26GVuvLE_55WM1zwbEt2zTzG7ByaAk")
-    # 设置 ngrok 代理到您的 FastAPI 应用程序的端口
-    ngrok_tunnel = ngrok.connect(args.port)
-    print('NGROK Tunnel URL:', ngrok_tunnel.public_url)
-
-    # 启动 FastAPI 应用
-    uvicorn.run("fooocusapi.api:app",  host=args.host, port=args.port, log_level=args.log_level)
-
+    uvicorn.run("fooocusapi.api:app", host=args.host,
+                port=args.port, log_level=args.log_level)
